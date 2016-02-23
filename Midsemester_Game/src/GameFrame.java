@@ -9,12 +9,19 @@ import javax.swing.JFrame;
  * @author Adam
  */
 public class GameFrame extends JFrame  {
+    
+    private MainPanel panel;
+    
+    
     GameFrame(){
         super ("IST Adventure");
         setSize (600, 400);
-        IntroPanel intro = new IntroPanel();
+        MainPanel panel = new MainPanel();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-        add(intro);
+        add(panel);
     }
+   public MainPanel getMainPanel(){
+       return panel;
+   }
 }
