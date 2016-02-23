@@ -12,8 +12,8 @@ public class IntroController {
 
     private IntroPanel view;
     private IntroModel model;
-    //private Person Player;
-    private
+    
+    
     IntroController(IntroPanel view, IntroModel model){
         this.view =view;
         this.model = model;
@@ -26,6 +26,8 @@ public class IntroController {
             }
             });
     }
+
+    
 
 
 }

@@ -113,7 +113,5 @@ public class IntroPanel extends javax.swing.JPanel {
     public void addStartGameListener(ActionListener al){
         StartGame.addActionListener(al);
     }
-    public Person createPlayer(String Name, String Gender, boolean isPlayer){
-        return new Person(Name, Gender, isPlayer);
-    }
+    
 }
