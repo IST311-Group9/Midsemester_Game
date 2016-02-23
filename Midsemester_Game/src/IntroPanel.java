@@ -1,3 +1,6 @@
+
+import java.awt.event.ActionListener;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -27,11 +30,13 @@ public class IntroPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         GenderSelect = new javax.swing.ButtonGroup();
+        StartGame = new javax.swing.JButton();
         NameLabel = new javax.swing.JLabel();
         NameField = new javax.swing.JTextField();
         Male = new javax.swing.JRadioButton();
         Female = new javax.swing.JRadioButton();
-        StartGame = new javax.swing.JButton();
+
+        StartGame.setText("Start Game");
 
         NameLabel.setText("Name");
 
@@ -46,8 +51,6 @@ public class IntroPanel extends javax.swing.JPanel {
 
         GenderSelect.add(Female);
         Female.setText("Female");
-
-        StartGame.setText("Start Game");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -97,5 +100,20 @@ public class IntroPanel extends javax.swing.JPanel {
     private javax.swing.JLabel NameLabel;
     private javax.swing.JButton StartGame;
     // End of variables declaration//GEN-END:variables
-    
+    public String getName(){
+        return NameField.getText();
+    }
+    public String getGender(){
+        if(Male.isSelected()){
+            return"Male";
+        }else{
+            return"Female";
+        }
+    }
+    public void addStartGameListener(ActionListener al){
+        StartGame.addActionListener(al);
+    }
+    public Person createPlayer(String Name, String Gender, boolean isPlayer){
+        return new Person(Name, Gender, isPlayer);
+    }
 }

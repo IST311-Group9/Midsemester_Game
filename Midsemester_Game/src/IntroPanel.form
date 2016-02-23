@@ -59,6 +59,11 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JButton" name="StartGame">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start Game"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JLabel" name="NameLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Name"/>
@@ -83,11 +88,6 @@
           <ComponentRef name="GenderSelect"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Female"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="StartGame">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Start Game"/>
       </Properties>
     </Component>
   </SubComponents>
