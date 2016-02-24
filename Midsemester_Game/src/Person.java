@@ -13,7 +13,7 @@ public class Person {
     private String gender;
     private boolean isPlayer;
     private String location;
-    public Person (String name, String gender, boolean isPlayer)
+    public Person (String name, String gender, boolean isPlayer, String location)
     {
         this.name = name;
         this.gender = gender;
