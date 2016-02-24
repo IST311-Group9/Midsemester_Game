@@ -28,12 +28,12 @@ public class GamePanel extends javax.swing.JPanel {
 
         jScrollBar1 = new javax.swing.JScrollBar();
         TextDisplay = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        GameText = new javax.swing.JTextArea();
         ResponseField = new javax.swing.JTextField();
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        TextDisplay.setViewportView(jTextArea1);
+        GameText.setColumns(20);
+        GameText.setRows(5);
+        TextDisplay.setViewportView(GameText);
 
         ResponseField.setText("Enter your response here");
         ResponseField.addActionListener(new java.awt.event.ActionListener() {
@@ -72,9 +72,14 @@ public class GamePanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea GameText;
     private javax.swing.JTextField ResponseField;
     private javax.swing.JScrollPane TextDisplay;
     private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+public void PrintToGameText(String stringToPrint){
+    GameText.append(stringToPrint);
+    
+}
+
 }
