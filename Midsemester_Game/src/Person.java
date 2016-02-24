@@ -12,11 +12,13 @@ public class Person {
     private String name;
     private String gender;
     private boolean isPlayer;
+    private String location;
     public Person (String name, String gender, boolean isPlayer)
     {
         this.name = name;
         this.gender = gender;
         this.isPlayer = isPlayer;
+        this.location = location;
     }
 
     /**
@@ -59,6 +61,20 @@ public class Person {
      */
     public void setIsPlayer(boolean isPlayer) {
         this.isPlayer = isPlayer;
+    }
+
+    /**
+     * @return the location
+     */
+    public String getLocation() {
+        return location;
+    }
+
+    /**
+     * @param location the location to set
+     */
+    public void setLocation(String location) {
+        this.location = location;
     }
     
 }
