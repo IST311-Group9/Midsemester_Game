@@ -15,13 +15,12 @@ public class GameFrame extends JFrame  {
     
     GameFrame(){
         super ("IST Adventure");
-        setSize (600, 400);
+        setSize (600, 450);
         MainPanel panel = new MainPanel();
+        getContentPane().add(panel,"Center");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-        add(panel);
+        
     }
-   public MainPanel getMainPanel(){
-       return panel;
-   }
+   
 }

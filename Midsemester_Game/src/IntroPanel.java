@@ -1,6 +1,3 @@
-
-import java.awt.event.ActionListener;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -30,21 +27,14 @@ public class IntroPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         GenderSelect = new javax.swing.ButtonGroup();
-        StartGame = new javax.swing.JButton();
-        NameLabel = new javax.swing.JLabel();
         NameField = new javax.swing.JTextField();
+        NameLabel = new javax.swing.JLabel();
         Male = new javax.swing.JRadioButton();
         Female = new javax.swing.JRadioButton();
-
-        StartGame.setText("Start Game");
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         NameLabel.setText("Name");
-
-        NameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NameFieldActionPerformed(evt);
-            }
-        });
 
         GenderSelect.add(Male);
         Male.setText("Male");
@@ -52,44 +42,48 @@ public class IntroPanel extends javax.swing.JPanel {
         GenderSelect.add(Female);
         Female.setText("Female");
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Enter your name, selected your gender and hit the \"Start Game\"\nbutton bellow to begin your very own IST adventure!");
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(NameLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Male)
-                        .addGap(18, 18, 18)
-                        .addComponent(Female))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(219, 219, 219)
-                        .addComponent(StartGame, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(NameLabel)
+                .addGap(11, 11, 11)
+                .addComponent(NameField)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(Male)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Female)
+                .addGap(200, 200, 200))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NameLabel)
                     .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Male)
-                    .addComponent(Female))
-                .addGap(67, 67, 67)
-                .addComponent(StartGame, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
+                    .addComponent(NameLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Female)
+                    .addComponent(Male))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(203, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void NameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NameFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -98,20 +92,20 @@ public class IntroPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton Male;
     private javax.swing.JTextField NameField;
     private javax.swing.JLabel NameLabel;
-    private javax.swing.JButton StartGame;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
-    public String getName(){
-        return NameField.getText();
+public String getName(){
+   return(NameField.getText());
+   
+}
+public String getGender(){
+    if(Male.isSelected()){
+        return"Male";
+        
+    }else{
+        return"Female";
     }
-    public String getGender(){
-        if(Male.isSelected()){
-            return"Male";
-        }else{
-            return"Female";
-        }
-    }
-    public void addStartGameListener(ActionListener al){
-        StartGame.addActionListener(al);
-    }
-    
+   }
+
 }
