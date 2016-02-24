@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,12 +12,14 @@
  * @author az060_001
  */
 public class Room {
-      private String name;
+    private String name;
     private int roomNumber;
+    private ArrayList<Person> PeopleInRoom;
     
     Room(String name, int number){
         this.name = name;
         this.roomNumber = number;
+        PeopleInRoom = new ArrayList();
     }
 
     /**

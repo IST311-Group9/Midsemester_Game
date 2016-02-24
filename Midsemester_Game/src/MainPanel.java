@@ -21,6 +21,7 @@ public class MainPanel extends JPanel implements ActionListener{
     GamePanel game;
     int PaneDisplayed;
     Person Player;
+    private Room Lobby;
     MainPanel(){
         super();
         setBackground(Color.gray);		
@@ -42,13 +43,14 @@ public class MainPanel extends JPanel implements ActionListener{
         revalidate();
         repaint();
         }
-    public Person CreatePlayer(String Name, String Gender, Boolean isPlayer){
-        return new Person(Name, Gender, isPlayer);
+    public Person CreatePlayer(String Name, String Gender, Boolean isPlayer,Room StartingLocation){
+        return new Person(Name, Gender, isPlayer, StartingLocation);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         if(PaneDisplayed == 1){
-            Player = CreatePlayer(intro.getName(), intro.getGender(), true);
+            Lobby = new Room("Lobby", 0);
+            Player = CreatePlayer(intro.getName(), intro.getGender(), true, Lobby);
             clearPanel();
             add(game);
             button.setTextEnter();

@@ -12,8 +12,8 @@ public class Person {
     private String name;
     private String gender;
     private boolean isPlayer;
-    private String location;
-    public Person (String name, String gender, boolean isPlayer, String location)
+    private Room location;
+    public Person (String name, String gender, boolean isPlayer, Room location)
     {
         this.name = name;
         this.gender = gender;
@@ -66,14 +66,14 @@ public class Person {
     /**
      * @return the location
      */
-    public String getLocation() {
+    public Room getLocation() {
         return location;
     }
 
     /**
      * @param location the location to set
      */
-    public void setLocation(String location) {
+    public void setLocation(Room location) {
         this.location = location;
     }
     public String getPersonInfo(String name, String gender, boolean isPlayer, String location)
