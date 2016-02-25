@@ -15,11 +15,13 @@ public class Room {
     private String name;
     private int roomNumber;
     private ArrayList<Person> PeopleInRoom;
+    private ArrayList<Room> NeighboringRooms;
     
     Room(String name, int number){
         this.name = name;
         this.roomNumber = number;
         PeopleInRoom = new ArrayList();
+        NeighboringRooms = new ArrayList();
     }
 
     /**
@@ -48,5 +50,25 @@ public class Room {
      */
     public void setRoomNumber(int roomNumber) {
         this.roomNumber = roomNumber;
+    }
+    public void addPerson(Person personToAdd){
+        PeopleInRoom.add(personToAdd);
+    }
+    public String getAllPeopleInRoom(){
+        for(int i = 0; i < PeopleInRoom.size(); i++){
+            Person tempPerson = PeopleInRoom.get(i);
+            return tempPerson.getName();
+        }
+        return("");
+    }
+   public void addRoom(Room roomToAdd){
+        NeighboringRooms.add(roomToAdd);
+    }
+    public String getAllNeighboringRooms(){
+        for(int i = 0; i < NeighboringRooms.size(); i++){
+            Room tempRoom = NeighboringRooms.get(i);
+            return tempRoom.getName();
+        }
+        return("");
     }
 }
