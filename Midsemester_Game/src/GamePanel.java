@@ -31,11 +31,18 @@ public class GamePanel extends javax.swing.JPanel {
         GameText = new javax.swing.JTextArea();
         ResponseField = new javax.swing.JTextField();
 
+        TextDisplay.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        GameText.setEditable(false);
         GameText.setColumns(20);
+        GameText.setLineWrap(true);
         GameText.setRows(5);
+        GameText.setWrapStyleWord(true);
+        GameText.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         TextDisplay.setViewportView(GameText);
 
         ResponseField.setText("Enter your response here");
+        ResponseField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         ResponseField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ResponseFieldActionPerformed(evt);
@@ -67,7 +74,7 @@ public class GamePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ResponseFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResponseFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_ResponseFieldActionPerformed
 
 
@@ -81,5 +88,12 @@ public void PrintToGameText(String stringToPrint){
     GameText.append(stringToPrint);
     
 }
+public int getUserSelectionNumber(){
+    int userSelection = Integer.parseInt(ResponseField.getText());
+    return userSelection;
+}
 
+public String getUserSelectionText(){
+    return ResponseField.getText();
+}
 }

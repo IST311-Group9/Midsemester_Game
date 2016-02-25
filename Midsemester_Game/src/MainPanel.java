@@ -43,16 +43,27 @@ public class MainPanel extends JPanel implements ActionListener{
         revalidate();
         repaint();
         }
+    public String printLocation(){
+        Room currentRoom = Player.getLocation();
+        if(currentRoom.getName().equals("Lobby")){
+            return("You are in the " + currentRoom.getName());
+        }else{
+        return ("You are in " + currentRoom.getName());
+            }
+    }
     public Person CreatePlayer(String Name, String Gender, Boolean isPlayer,Room StartingLocation){
         return new Person(Name, Gender, isPlayer, StartingLocation);
     }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if(PaneDisplayed == 1){
             Lobby = new Room("Lobby", 0);
             Player = CreatePlayer(intro.getName(), intro.getGender(), true, Lobby);
+            
             clearPanel();
             add(game);
+            game.PrintToGameText(printLocation());
             button.setTextEnter();
             PaneDisplayed = 2;
         }else{

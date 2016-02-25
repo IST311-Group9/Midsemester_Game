@@ -42,9 +42,12 @@ public class IntroPanel extends javax.swing.JPanel {
         GenderSelect.add(Female);
         Female.setText("Female");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Enter your name, selected your gender and hit the \"Start Game\"\nbutton bellow to begin your very own IST adventure!");
+        jTextArea1.setText("\t\t     Welcome to IST Adventure!\n\nEnter your name, selected your gender and hit the \"Start Game\" button bellow to begin your very own IST adventure!");
+        jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
