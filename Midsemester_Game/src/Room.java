@@ -54,21 +54,21 @@ public class Room {
     public void addPerson(Person personToAdd){
         PeopleInRoom.add(personToAdd);
     }
-    public String getAllPeopleInRoom(){
-        for(int i = 0; i < PeopleInRoom.size(); i++){
-            Person tempPerson = PeopleInRoom.get(i);
-            return tempPerson.getName();
-        }
-        return("");
+    public ArrayList<Person> getPeopleInRoom(){
+        
+       return PeopleInRoom;
+       
     }
    public void addRoom(Room roomToAdd){
         NeighboringRooms.add(roomToAdd);
     }
-    public String getAllNeighboringRooms(){
-        for(int i = 0; i < NeighboringRooms.size(); i++){
-            Room tempRoom = NeighboringRooms.get(i);
-            return tempRoom.getName();
-        }
-        return("");
+    public ArrayList<Room> getNeighboringRooms(){
+
+         return NeighboringRooms;
+        
     }
+    public Room getSingleRoom(int userSelection){
+        return NeighboringRooms.get(userSelection);
+    }
+    
 }
