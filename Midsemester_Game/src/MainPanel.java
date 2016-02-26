@@ -67,6 +67,15 @@ public class MainPanel extends JPanel implements ActionListener{
         
              return stringToPrint;   
     }
+    public void changeRooms(int userSelection){
+            Room currentRoom = Player.getLocation();
+            Room roomToGoTo = currentRoom.getSingleRoom(userSelection);
+            Player.setLocation(roomToGoTo);
+            currentRoom = Player.getLocation();
+            printLocation();
+            game.PrintToGameText(printLocation());
+            game.PrintToGameText(PrintNeighboringRooms(currentRoom.getNeighboringRooms()));
+    }
     
     
     
@@ -92,13 +101,7 @@ public class MainPanel extends JPanel implements ActionListener{
             
         }else{
             int userSelection = game.getUserSelectionNumber() - 1;
-            Room currentRoom = Player.getLocation();
-            Room roomToGoTo = currentRoom.getSingleRoom(userSelection);
-            Player.setLocation(roomToGoTo);
-            currentRoom = Player.getLocation();
-            printLocation();
-            game.PrintToGameText(printLocation());
-            game.PrintToGameText(PrintNeighboringRooms(currentRoom.getNeighboringRooms()));
+            changeRooms(userSelection);
         }
     }
     }
