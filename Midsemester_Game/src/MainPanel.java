@@ -89,7 +89,7 @@ public class MainPanel extends JPanel implements ActionListener{
             Lobby.addRoom(IST210);
             IST210.addRoom(Lobby);
             IST208.addRoom(Lobby);
-            Lobby.addPerson(Player);
+            //Lobby.addPerson(Player);
             Player = CreatePlayer(intro.getName(), intro.getGender(), true, Lobby);
             
             clearPanel();
