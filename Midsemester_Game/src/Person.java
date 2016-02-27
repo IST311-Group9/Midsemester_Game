@@ -76,7 +76,7 @@ public class Person {
     public void setLocation(Room location) {
         this.location = location;
     }
-    public String getPersonInfo(String name, String gender, boolean isPlayer, Room location)
+    public String getPersonInfo()
     {
         return "Name: "+name+", Gender: "+gender+", Is Player: "+isPlayer+", Location: "+location.getName()+" "+location.getRoomNumber();
     }
