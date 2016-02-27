@@ -64,7 +64,7 @@ public class RoomTest {
         Room instance = new Room("IST",210);
         Person Joe = new Person("Joe","Schmoe",false,instance);
         Person Arthur = new Person("Arthur","Zhang",true,instance);
-        ArrayList<Person> expResult;
+        ArrayList<Person> expResult = null;
         expResult.add(Joe);
         expResult.add(Arthur);
         ArrayList<Person> result = instance.getPeopleInRoom();
