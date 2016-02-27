@@ -48,90 +48,28 @@ public class RoomTest {
         String result = instance.getName();
         assertEquals(expResult, result);
     }
-
-    /**
-     * Test of setName method, of class Room.
-     */
-    @Test
-    public void testSetName() {
-        System.out.println("setName");
-        String name = "";
-        Room instance = null;
-        instance.setName(name);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getRoomNumber method, of class Room.
-     */
-    @Test
     public void testGetRoomNumber() {
         System.out.println("getRoomNumber");
-        Room instance = null;
-        int expResult = 0;
+        Room instance = new Room("IST",210);
+        int expResult = 210;
         int result = instance.getRoomNumber();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of setRoomNumber method, of class Room.
-     */
     @Test
-    public void testSetRoomNumber() {
-        System.out.println("setRoomNumber");
-        int roomNumber = 0;
-        Room instance = null;
-        instance.setRoomNumber(roomNumber);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addPerson method, of class Room.
-     */
-    @Test
-    public void testAddPerson() {
-        System.out.println("addPerson");
-        Person personToAdd = null;
-        Room instance = null;
-        instance.addPerson(personToAdd);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
     /**
      * Test of getPeopleInRoom method, of class Room.
      */
-    @Test
     public void testGetPeopleInRoom() {
         System.out.println("getPeopleInRoom");
-        Room instance = null;
-        ArrayList<Person> expResult = null;
+        Room instance = new Room("IST",210);
+        Person Joe = new Person("Joe","Schmoe",false,instance);
+        Person Arthur = new Person("Arthur","Zhang",true,instance);
+        ArrayList<Person> expResult;
+        expResult.add(Joe);
+        expResult.add(Arthur);
         ArrayList<Person> result = instance.getPeopleInRoom();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of addRoom method, of class Room.
-     */
-    @Test
-    public void testAddRoom() {
-        System.out.println("addRoom");
-        Room roomToAdd = null;
-        Room instance = null;
-        instance.addRoom(roomToAdd);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getNeighboringRooms method, of class Room.
-     */
     @Test
     public void testGetNeighboringRooms() {
         System.out.println("getNeighboringRooms");
@@ -142,18 +80,4 @@ public class RoomTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of getSingleRoom method, of class Room.
-     */
-    @Test
-    public void testGetSingleRoom() {
-        System.out.println("getSingleRoom");
-        int userSelection = 0;
-        Room instance = null;
-        Room expResult = null;
-        Room result = instance.getSingleRoom(userSelection);
-        assertEquals(expResult, result);
-    }
-    
 }
