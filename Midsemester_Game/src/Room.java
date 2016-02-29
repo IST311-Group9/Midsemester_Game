@@ -70,7 +70,7 @@ public class Room {
     public Room getSingleRoom(int userSelection){
         return NeighboringRooms.get(userSelection);
     }
-    public void removePerson(ArrayList<Person>PeopleInRoom)
+    public void removePerson()
     {
         PeopleInRoom.remove(PeopleInRoom.size()-1);
     }
