@@ -11,12 +11,12 @@
 public class Professor extends Person {
     
     private boolean hasHomework;
-    private boolean isProfessor;
+
 
     public Professor(String name, String gender, boolean isPlayer, Room location, boolean hasHomework) {
         super(name, gender, isPlayer, location);
         this.hasHomework = hasHomework;
-        isProfessor = true;
+        
         
     }
 
