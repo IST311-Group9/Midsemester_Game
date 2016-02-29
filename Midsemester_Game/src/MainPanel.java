@@ -69,9 +69,11 @@ public class MainPanel extends JPanel implements ActionListener{
     }
     public void changeRooms(int userSelection){
             Room currentRoom = Player.getLocation();
+            currentRoom.removePerson();
             Room roomToGoTo = currentRoom.getSingleRoom(userSelection);
             Player.setLocation(roomToGoTo);
             currentRoom = Player.getLocation();
+            currentRoom.addPerson(Player);
             printLocation();
             game.PrintToGameText(printLocation());
             game.PrintToGameText(PrintNeighboringRooms(currentRoom.getNeighboringRooms()));

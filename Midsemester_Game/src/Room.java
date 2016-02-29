@@ -16,6 +16,7 @@ public class Room {
     private int roomNumber;
     private ArrayList<Person> PeopleInRoom;
     private ArrayList<Room> NeighboringRooms;
+    private Boolean hasProfessor;
     
     Room(String name, int number){
         this.name = name;
