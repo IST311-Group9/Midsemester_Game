@@ -55,6 +55,10 @@ public class Room {
     public void addPerson(Person personToAdd){
         PeopleInRoom.add(personToAdd);
     }
+    public void addProfessor(Professor professor){
+        PeopleInRoom.add(professor);
+        hasProfessor = true;
+    }
     public ArrayList<Person> getPeopleInRoom(){
         
        return PeopleInRoom;
