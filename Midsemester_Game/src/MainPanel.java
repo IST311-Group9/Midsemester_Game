@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JPanel;
 
 /*
@@ -32,7 +33,6 @@ public class MainPanel extends JPanel implements ActionListener{
     private Room IST208;
     private Room IST210;
     private Professor professor;
-    private int randomRoom;
     
     MainPanel(){
         super();
@@ -90,7 +90,9 @@ public class MainPanel extends JPanel implements ActionListener{
     
     public void addProfessorToRandomRoom()
     {
-        randomRoom = (int) (Math.random() * (210 - 201)) + 201;
+        int[] roomNums = {201,202,203,205,206,208,210};
+        Random rand = new Random();
+        int randomRoom = roomNums[rand.nextInt(roomNums.length)];
         
         if (randomRoom == 201)
         {
@@ -107,12 +109,6 @@ public class MainPanel extends JPanel implements ActionListener{
             IST203.addProfessor(professor);
             professor.setLocation(IST203);
         }
-        else if (randomRoom == 204)
-        {
-            //there is no IST 204, 207, or 209. We added if statements for these and just deprecated the room number by 1
-            IST203.addProfessor(professor);
-            professor.setLocation(IST203);
-        }
         else if (randomRoom == 205)
         {
             IST205.addProfessor(professor);
@@ -123,17 +119,7 @@ public class MainPanel extends JPanel implements ActionListener{
             IST206.addProfessor(professor);
             professor.setLocation(IST206);
         }
-        else if (randomRoom == 207)
-        {
-            IST206.addProfessor(professor);
-            professor.setLocation(IST206);
-        }
         else if (randomRoom == 208)
-        {
-            IST208.addProfessor(professor);
-            professor.setLocation(IST208);
-        }
-        else if (randomRoom == 209)
         {
             IST208.addProfessor(professor);
             professor.setLocation(IST208);
