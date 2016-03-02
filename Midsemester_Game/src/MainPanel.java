@@ -17,14 +17,23 @@ import javax.swing.JPanel;
  * @author Adam
  */
 public class MainPanel extends JPanel implements ActionListener{
-    ButtonPanel button;
-    IntroPanel intro;
-    GamePanel game;
-    int PaneDisplayed;
-    Person Player;
+    
+    private ButtonPanel button;
+    private IntroPanel intro;
+    private GamePanel game;
+    private int PaneDisplayed;
+    private Person Player;
     private Room Lobby;
+    private Room IST201;
+    private Room IST202;
+    private Room IST203;
+    private Room IST205;
+    private Room IST206;
     private Room IST208;
     private Room IST210;
+    private Professor professor;
+    private int randomRoom;
+    
     MainPanel(){
         super();
         setBackground(Color.gray);		
@@ -79,14 +88,79 @@ public class MainPanel extends JPanel implements ActionListener{
             game.PrintToGameText(PrintNeighboringRooms(currentRoom.getNeighboringRooms()));
     }
     
-    
+    public void addProfessorToRandomRoom()
+    {
+        randomRoom = (int) (Math.random() * (210 - 201)) + 201;
+        
+        if (randomRoom == 201)
+        {
+            IST201.addProfessor(professor);
+            professor.setLocation(IST201);
+        }
+        else if (randomRoom == 202)
+        {
+            IST202.addProfessor(professor);
+            professor.setLocation(IST202);
+        }
+        else if (randomRoom == 203)
+        {
+            IST203.addProfessor(professor);
+            professor.setLocation(IST203);
+        }
+        else if (randomRoom == 204)
+        {
+            //there is no IST 204, 207, or 209. We added if statements for these and just deprecated the room number by 1
+            IST203.addProfessor(professor);
+            professor.setLocation(IST203);
+        }
+        else if (randomRoom == 205)
+        {
+            IST205.addProfessor(professor);
+            professor.setLocation(IST205);
+        }
+        else if (randomRoom == 206)
+        {
+            IST206.addProfessor(professor);
+            professor.setLocation(IST206);
+        }
+        else if (randomRoom == 207)
+        {
+            IST206.addProfessor(professor);
+            professor.setLocation(IST206);
+        }
+        else if (randomRoom == 208)
+        {
+            IST208.addProfessor(professor);
+            professor.setLocation(IST208);
+        }
+        else if (randomRoom == 209)
+        {
+            IST208.addProfessor(professor);
+            professor.setLocation(IST208);
+        }
+        else if (randomRoom == 210)
+        {
+            IST210.addProfessor(professor);
+            professor.setLocation(IST210);
+        }
+    }
     
     @Override
     public void actionPerformed(ActionEvent e) {
         if(PaneDisplayed == 1){
             Lobby = new Room("Lobby", 0);
+            IST201 = new Room("IST201", 201);
+            IST202 = new Room("IST202", 202);
+            IST203 = new Room("IST203", 203);
+            IST205 = new Room("IST205", 205);
+            IST206 = new Room("IST206", 206);
             IST208 = new Room("IST208", 208);
             IST210 = new Room("IST210", 210);
+            Lobby.addRoom(IST201);
+            Lobby.addRoom(IST202);
+            Lobby.addRoom(IST203);
+            Lobby.addRoom(IST205);
+            Lobby.addRoom(IST206);
             Lobby.addRoom(IST208);
             Lobby.addRoom(IST210);
             IST210.addRoom(Lobby);
