@@ -33,11 +33,37 @@ public class MainPanel extends JPanel implements ActionListener{
     private Room IST208;
     private Room IST210;
     private Professor professor;
+    private int menuValue;
     
     MainPanel(){
         super();
         setBackground(Color.gray);		
         setLayout(new BorderLayout());
+        
+                    Lobby = new Room("Lobby", 0);
+            IST201 = new Room("IST201", 201);
+            IST202 = new Room("IST202", 202);
+            IST203 = new Room("IST203", 203);
+            IST205 = new Room("IST205", 205);
+            IST206 = new Room("IST206", 206);
+            IST208 = new Room("IST208", 208);
+            IST210 = new Room("IST210", 210);
+            Lobby.addRoom(IST201);
+            Lobby.addRoom(IST202);
+            Lobby.addRoom(IST203);
+            Lobby.addRoom(IST205);
+            Lobby.addRoom(IST206);
+            Lobby.addRoom(IST208);
+            Lobby.addRoom(IST210);
+            IST210.addRoom(Lobby);
+            IST208.addRoom(Lobby);
+            IST201.addRoom(Lobby);
+            IST202.addRoom(Lobby);
+            IST203.addRoom(Lobby);
+            IST205.addRoom(Lobby);
+            IST206.addRoom(Lobby);
+            professor = new Professor("Dr.Rimland", "Male", false, Lobby);
+            menuValue = 1;
         
         intro = new IntroPanel();
         game = new GamePanel();
@@ -55,6 +81,16 @@ public class MainPanel extends JPanel implements ActionListener{
         revalidate();
         repaint();
         }
+    public void printRoomOptions(){
+        Room currentRoom = Player.getLocation();
+        game.PrintToGameText("WHAT WOULD YOU LIKE TO DO?" + System.lineSeparator());
+        ArrayList optionsList = currentRoom.getRoomOptions();
+        for (int i = 0; i < optionsList.size(); i++){
+            int optionNumber = i + 1;
+            game.PrintToGameText(optionNumber + ".)" + optionsList.get(i) + System.lineSeparator() );
+        }
+            game.PrintToGameText(System.lineSeparator());
+    }
     public String printLocation(){
         Room currentRoom = Player.getLocation();
         if(currentRoom.getName().equals("Lobby")){
@@ -85,7 +121,22 @@ public class MainPanel extends JPanel implements ActionListener{
             currentRoom.addPerson(Player);
             printLocation();
             game.PrintToGameText(printLocation());
-            game.PrintToGameText(PrintNeighboringRooms(currentRoom.getNeighboringRooms()));
+            printRoomOptions();
+            menuValue = 1;
+    }
+    public void checkForProfessor(){
+        Room CurrentRoom = Player.getLocation();
+        boolean hasProfessor = CurrentRoom.getHasProfessor();
+        
+        if(hasProfessor == true){
+            game.PrintToGameText("Your professor is in the room!" + System.lineSeparator());
+            
+        }else{
+            game.PrintToGameText("Your proffessor doesn't seem to be here");
+        }
+    }
+    public void printIntro(){
+        game.PrintToGameText("You are walking to the IST building running a little late for class. You walk up the Stairs and into the lobby. Now you must find your professor and turn in your homework. Good luck remembering what room he's in." + System.lineSeparator() + System.lineSeparator());
     }
     
     public void addProfessorToRandomRoom()
@@ -134,41 +185,42 @@ public class MainPanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(PaneDisplayed == 1){
-            Lobby = new Room("Lobby", 0);
-            IST201 = new Room("IST201", 201);
-            IST202 = new Room("IST202", 202);
-            IST203 = new Room("IST203", 203);
-            IST205 = new Room("IST205", 205);
-            IST206 = new Room("IST206", 206);
-            IST208 = new Room("IST208", 208);
-            IST210 = new Room("IST210", 210);
-            Lobby.addRoom(IST201);
-            Lobby.addRoom(IST202);
-            Lobby.addRoom(IST203);
-            Lobby.addRoom(IST205);
-            Lobby.addRoom(IST206);
-            Lobby.addRoom(IST208);
-            Lobby.addRoom(IST210);
-            IST210.addRoom(Lobby);
-            IST208.addRoom(Lobby);
-            IST201.addRoom(Lobby);
-            IST202.addRoom(Lobby);
-            IST203.addRoom(Lobby);
-            IST205.addRoom(Lobby);
-            IST206.addRoom(Lobby);
+
+            
             
             Player = CreatePlayer(intro.getName(), intro.getGender(), true, Lobby);
-            
+            addProfessorToRandomRoom();
             clearPanel();
             add(game);
+            printIntro();
             game.PrintToGameText(printLocation());
             button.setTextEnter();
-            game.PrintToGameText(PrintNeighboringRooms(Lobby.getNeighboringRooms()));
+            printRoomOptions();
             PaneDisplayed = 2;
+            Lobby.addPerson(Player);
             
         }else{
-            int userSelection = game.getUserSelectionNumber() - 1;
+            int userSelection = game.getUserSelectionNumber();
+            boolean usedMenu2 = false;
+            if (menuValue == 2){ 
+            userSelection = userSelection - 1;   
             changeRooms(userSelection);
+            menuValue = 1;
+            usedMenu2  = true;
+                
+           }
+           
+            if (menuValue == 1 && usedMenu2 == false){
+               if(userSelection == 2){
+                   checkForProfessor();
+               }else{
+               Room CurrentRoom = Player.getLocation();
+               ArrayList RoomList = CurrentRoom.getNeighboringRooms();
+               game.PrintToGameText(PrintNeighboringRooms(RoomList));
+               menuValue = 2;
+                }
+           }
+           
         }
     }
     }

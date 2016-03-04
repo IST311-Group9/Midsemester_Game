@@ -17,12 +17,17 @@ public class Room {
     private ArrayList<Person> PeopleInRoom;
     private ArrayList<Room> NeighboringRooms;
     private Boolean hasProfessor;
+    private ArrayList<String> RoomOptions;
     
     Room(String name, int number){
         this.name = name;
         this.roomNumber = number;
         PeopleInRoom = new ArrayList();
         NeighboringRooms = new ArrayList();
+        RoomOptions = new ArrayList();
+        RoomOptions.add("Change Rooms");
+        RoomOptions.add("Check For Professor");
+        hasProfessor = false;
     }
 
     /**
@@ -59,6 +64,9 @@ public class Room {
         PeopleInRoom.add(professor);
         hasProfessor = true;
     }
+    public Boolean getHasProfessor(){
+        return hasProfessor;
+    }
     public ArrayList<Person> getPeopleInRoom(){
         
        return PeopleInRoom;
@@ -79,4 +87,12 @@ public class Room {
     {
         PeopleInRoom.remove(PeopleInRoom.size()-1);
     }
+
+    /**
+     * @return the RoomOptions
+     */
+    public ArrayList<String> getRoomOptions() {
+        return RoomOptions;
+    }
+
 }
