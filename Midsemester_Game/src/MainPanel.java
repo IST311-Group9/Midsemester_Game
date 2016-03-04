@@ -22,6 +22,8 @@ public class MainPanel extends JPanel implements ActionListener{
     private ButtonPanel button;
     private IntroPanel intro;
     private GamePanel game;
+    private CreditsPanel credits;
+    
     private int PaneDisplayed;
     private Person Player;
     private Room Lobby;
@@ -65,8 +67,11 @@ public class MainPanel extends JPanel implements ActionListener{
             professor = new Professor("Dr.Rimland", "Male", false, Lobby);
             menuValue = 1;
         
+            
         intro = new IntroPanel();
         game = new GamePanel();
+        credits = new CreditsPanel();
+        
         button = new ButtonPanel();
         
         add(intro, BorderLayout.CENTER);
@@ -90,6 +95,7 @@ public class MainPanel extends JPanel implements ActionListener{
             game.PrintToGameText(optionNumber + ".)" + optionsList.get(i) + System.lineSeparator() );
         }
             game.PrintToGameText(System.lineSeparator());
+            int menuValue = 1;
     }
     public String printLocation(){
         Room currentRoom = Player.getLocation();
@@ -122,17 +128,23 @@ public class MainPanel extends JPanel implements ActionListener{
             printLocation();
             game.PrintToGameText(printLocation());
             printRoomOptions();
-            menuValue = 1;
+            
     }
+    public void printMenu3(){
+            game.PrintToGameText("Would you like to turn in your homework to " + professor.getName() + "?" + System.lineSeparator() + "1.)Yes" +System.lineSeparator() + "2.)No");
+            menuValue = 3;
+        }   
     public void checkForProfessor(){
         Room CurrentRoom = Player.getLocation();
         boolean hasProfessor = CurrentRoom.getHasProfessor();
         
         if(hasProfessor == true){
             game.PrintToGameText("Your professor is in the room!" + System.lineSeparator());
-            
+             printMenu3();
+           
         }else{
-            game.PrintToGameText("Your proffessor doesn't seem to be here");
+            game.PrintToGameText("Your proffessor doesn't seem to be here" + System.lineSeparator());
+            printRoomOptions();
         }
     }
     public void printIntro(){
@@ -201,24 +213,34 @@ public class MainPanel extends JPanel implements ActionListener{
             
         }else{
             int userSelection = game.getUserSelectionNumber();
-            boolean usedMenu2 = false;
+            boolean usedAMenu = false;
             if (menuValue == 2){ 
             userSelection = userSelection - 1;   
             changeRooms(userSelection);
             menuValue = 1;
-            usedMenu2  = true;
+            usedAMenu = true;
                 
            }
            
-            if (menuValue == 1 && usedMenu2 == false){
+            if (menuValue == 1 && usedAMenu == false){
                if(userSelection == 2){
                    checkForProfessor();
                }else{
-               Room CurrentRoom = Player.getLocation();
-               ArrayList RoomList = CurrentRoom.getNeighboringRooms();
-               game.PrintToGameText(PrintNeighboringRooms(RoomList));
-               menuValue = 2;
-                }
+                Room CurrentRoom = Player.getLocation();
+                ArrayList RoomList = CurrentRoom.getNeighboringRooms();
+                game.PrintToGameText(PrintNeighboringRooms(RoomList));
+                menuValue = 2;
+                }usedAMenu = true;
+                
+           }if (menuValue == 3 && usedAMenu == false ){
+               if(userSelection == 1){
+                   clearPanel();
+                   remove(button);
+                   add(credits, BorderLayout.CENTER);
+               }else{
+                   printRoomOptions();
+               }
+               
            }
            
         }
