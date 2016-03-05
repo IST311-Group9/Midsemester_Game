@@ -42,7 +42,7 @@ public class MainPanel extends JPanel implements ActionListener{
         setBackground(Color.gray);		
         setLayout(new BorderLayout());
         
-                    Lobby = new Room("Lobby", 0);
+            Lobby = new Room("Lobby", 0);
             IST201 = new Room("IST201", 201);
             IST202 = new Room("IST202", 202);
             IST203 = new Room("IST203", 203);

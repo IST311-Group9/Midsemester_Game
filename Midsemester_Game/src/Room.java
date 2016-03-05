@@ -69,7 +69,7 @@ public class Room {
     }
     public ArrayList<Person> getPeopleInRoom(){
         
-       return PeopleInRoom;
+       return(PeopleInRoom);
        
     }
    public void addRoom(Room roomToAdd){
@@ -77,7 +77,7 @@ public class Room {
     }
     public ArrayList<Room> getNeighboringRooms(){
 
-         return NeighboringRooms;
+         return(NeighboringRooms);
         
     }
     public Room getSingleRoom(int userSelection){
