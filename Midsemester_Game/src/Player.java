@@ -8,6 +8,9 @@
  *
  * @author az060_001
  */
+
+//Refactor- Extract Subclass
+
 public class Player extends Person {
     
     private boolean isPlayer;
@@ -24,13 +27,11 @@ public class Player extends Person {
         return isPlayer;
     }
 
-    /**
-     * @param hasHomework the hasHomework to set
-     */
     public void setisPlayer(boolean isPlayer) {
         this.isPlayer = isPlayer;
     }
-    
+
+    @Override
     public String getPersonInfo()
     {
         super.getPersonInfo();

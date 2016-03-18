@@ -64,7 +64,7 @@ public class MainPanel extends JPanel implements ActionListener{
             IST203.addRoom(Lobby);
             IST205.addRoom(Lobby);
             IST206.addRoom(Lobby);
-            professor = new Professor("Dr.Rimland", "Male", false, Lobby);
+            professor = new Professor("Dr.Rimland", "Male", Lobby, false, true);
             menuValue = 1;
         
             
@@ -105,7 +105,7 @@ public class MainPanel extends JPanel implements ActionListener{
         return ("You are in " + currentRoom.getName() + System.lineSeparator());
             }
     }
-    public Player CreatePlayer(String Name, String Gender, Boolean isPlayer,Room StartingLocation){
+    public Player CreatePlayer(String Name, String Gender, Boolean isPlayer, Room StartingLocation){
         return new Player(Name, Gender, isPlayer, StartingLocation);
     }
     public String PrintNeighboringRooms(ArrayList<Room> NeighboringRooms){

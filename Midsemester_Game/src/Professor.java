@@ -8,14 +8,18 @@
  *
  * @author Adam
  */
+
+//Refactor- Extract Subclass
+
 public class Professor extends Person {
     
     private boolean hasHomework;
+    private boolean isProfessor;
 
-
-    public Professor(String name, String gender, boolean isPlayer, Room location) {
+    public Professor(String name, String gender, Room location, boolean hasHomework, boolean isProfessor) {
         super(name, gender, location);
         hasHomework = false;
+        isProfessor = true;
     }
 
     /**
@@ -31,5 +35,19 @@ public class Professor extends Person {
     public void setHasHomework(boolean hasHomework) {
         this.hasHomework = hasHomework;
     }
+    
+    @Override
+    public String getPersonInfo()
+    {
+        super.getPersonInfo();
+        return ", Is Professor: "+isProfessor;
+    }
+    
+    public boolean isProfessor() {
+        return isProfessor;
+    }
 
+    public void setIsProfessor(boolean isProfessor) {
+        this.isProfessor = isProfessor;
+    }
 }
