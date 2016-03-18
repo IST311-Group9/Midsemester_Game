@@ -11,7 +11,6 @@
 public class Person {
     private String name;
     private String gender;
-    private boolean isPlayer;
     private Room location;
     
     public Person (String name, String gender, Room location)
