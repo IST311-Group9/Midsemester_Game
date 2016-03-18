@@ -64,9 +64,9 @@ public class Room {
         PeopleInRoom.add(professor);
         hasProfessor = true;
     }
-    public void addPerson(Player player){
-        PeopleInRoom.add(player);
-    }
+//    public void addPerson(Player player){
+//        PeopleInRoom.add(player);
+//    }
     //Refactor- Rename Method (using method overloading)
 //    public void addProfessor(Professor professor){
 //        PeopleInRoom.add(professor);
