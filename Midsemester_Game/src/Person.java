@@ -13,11 +13,11 @@ public class Person {
     private String gender;
     private boolean isPlayer;
     private Room location;
-    public Person (String name, String gender, boolean isPlayer, Room location)
+    
+    public Person (String name, String gender, Room location)
     {
         this.name = name;
         this.gender = gender;
-        this.isPlayer = isPlayer;
         this.location = location;
     }
 
@@ -50,20 +50,6 @@ public class Person {
     }
 
     /**
-     * @return the isPlayer
-     */
-    public boolean isIsPlayer() {
-        return isPlayer;
-    }
-
-    /**
-     * @param isPlayer the isPlayer to set
-     */
-    public void setIsPlayer(boolean isPlayer) {
-        this.isPlayer = isPlayer;
-    }
-
-    /**
      * @return the location
      */
     public Room getLocation() {
@@ -78,6 +64,6 @@ public class Person {
     }
     public String getPersonInfo()
     {
-        return "Name: "+name+", Gender: "+gender+", Is Player: "+isPlayer+", Location: "+location.getName()+" "+location.getRoomNumber();
+        return "Name: "+name+", Gender: "+gender+", Location: "+location.getName()+" "+location.getRoomNumber();
     }
 }

@@ -25,7 +25,7 @@ public class MainPanel extends JPanel implements ActionListener{
     private CreditsPanel credits;
     
     private int PaneDisplayed;
-    private Person Player;
+    private Player Player;
     private Room Lobby;
     private Room IST201;
     private Room IST202;
@@ -105,8 +105,8 @@ public class MainPanel extends JPanel implements ActionListener{
         return ("You are in " + currentRoom.getName() + System.lineSeparator());
             }
     }
-    public Person CreatePlayer(String Name, String Gender, Boolean isPlayer,Room StartingLocation){
-        return new Person(Name, Gender, isPlayer, StartingLocation);
+    public Player CreatePlayer(String Name, String Gender, Boolean isPlayer,Room StartingLocation){
+        return new Player(Name, Gender, isPlayer, StartingLocation);
     }
     public String PrintNeighboringRooms(ArrayList<Room> NeighboringRooms){
         String stringToPrint = ("WHAT ROOM WOULD YOU LIKE TO MOVE TO?" + System.lineSeparator());
@@ -159,37 +159,37 @@ public class MainPanel extends JPanel implements ActionListener{
         
         if (randomRoom == 201)
         {
-            IST201.addProfessor(professor);
+            IST201.addPerson(professor);
             professor.setLocation(IST201);
         }
         else if (randomRoom == 202)
         {
-            IST202.addProfessor(professor);
+            IST202.addPerson(professor);
             professor.setLocation(IST202);
         }
         else if (randomRoom == 203)
         {
-            IST203.addProfessor(professor);
+            IST203.addPerson(professor);
             professor.setLocation(IST203);
         }
         else if (randomRoom == 205)
         {
-            IST205.addProfessor(professor);
+            IST205.addPerson(professor);
             professor.setLocation(IST205);
         }
         else if (randomRoom == 206)
         {
-            IST206.addProfessor(professor);
+            IST206.addPerson(professor);
             professor.setLocation(IST206);
         }
         else if (randomRoom == 208)
         {
-            IST208.addProfessor(professor);
+            IST208.addPerson(professor);
             professor.setLocation(IST208);
         }
         else if (randomRoom == 210)
         {
-            IST210.addProfessor(professor);
+            IST210.addPerson(professor);
             professor.setLocation(IST210);
         }
     }

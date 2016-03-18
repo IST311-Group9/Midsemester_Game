@@ -14,10 +14,8 @@ public class Professor extends Person {
 
 
     public Professor(String name, String gender, boolean isPlayer, Room location) {
-        super(name, gender, isPlayer, location);
+        super(name, gender, location);
         hasHomework = false;
-        
-        
     }
 
     /**
