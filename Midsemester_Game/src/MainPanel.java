@@ -201,6 +201,7 @@ public class MainPanel extends JPanel implements ActionListener{
             game.PrintToGameText(printLocation());
             button.setTextEnter();
             printRoomOptions();
+            game.setUserSelectionModelMain();
             return PaneDisplayed = 2;
     }
     //Refactor - Extract Method - Adam 
@@ -214,6 +215,11 @@ public class MainPanel extends JPanel implements ActionListener{
         Room CurrentRoom = Player.getLocation();
         ArrayList RoomList = CurrentRoom.getNeighboringRooms();
         game.PrintToGameText(PrintNeighboringRooms(RoomList));
+        if(CurrentRoom.equals(Lobby)){
+            game.setUserSelectionModelLobby();
+        }else{
+            game.setUserSelectionModelClassroom();
+        }
         menuValue = 2;
     }
     
@@ -226,6 +232,7 @@ public class MainPanel extends JPanel implements ActionListener{
             PaneDisplayed = TransitionIntroToGame();
             
         }else{
+          
             int userSelection = game.getUserSelectionNumber();
             boolean usedAMenu = false;
             
@@ -233,6 +240,7 @@ public class MainPanel extends JPanel implements ActionListener{
                 userSelection = userSelection - 1;   
                 changeRooms(userSelection);
                 menuValue = 1;
+                game.setUserSelectionModelMain();
                 usedAMenu = true;
                 
            }

@@ -29,7 +29,7 @@ public class GamePanel extends javax.swing.JPanel {
         jScrollBar1 = new javax.swing.JScrollBar();
         TextDisplay = new javax.swing.JScrollPane();
         GameText = new javax.swing.JTextArea();
-        ResponseField = new javax.swing.JTextField();
+        UserSelection = new javax.swing.JComboBox();
 
         TextDisplay.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -41,22 +41,16 @@ public class GamePanel extends javax.swing.JPanel {
         GameText.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         TextDisplay.setViewportView(GameText);
 
-        ResponseField.setText("Enter your response here");
-        ResponseField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ResponseField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ResponseFieldActionPerformed(evt);
-            }
-        });
+        UserSelection.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", " " }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ResponseField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(28, 28, 28)
+                .addComponent(UserSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addComponent(TextDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -66,22 +60,18 @@ public class GamePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ResponseField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UserSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(TextDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ResponseFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResponseFieldActionPerformed
-        
-    }//GEN-LAST:event_ResponseFieldActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea GameText;
-    private javax.swing.JTextField ResponseField;
     private javax.swing.JScrollPane TextDisplay;
+    private javax.swing.JComboBox UserSelection;
     private javax.swing.JScrollBar jScrollBar1;
     // End of variables declaration//GEN-END:variables
 public void PrintToGameText(String stringToPrint){
@@ -89,11 +79,17 @@ public void PrintToGameText(String stringToPrint){
     
 }
 public int getUserSelectionNumber(){
-    int userSelection = Integer.parseInt(ResponseField.getText());
+    int userSelection = Integer.parseInt((String) UserSelection.getSelectedItem());
     return userSelection;
 }
+public void setUserSelectionModelMain(){
+       UserSelection.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2"}));
+    }
+ public void setUserSelectionModelLobby(){
+        UserSelection.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3","4","5","6","7" }));
+ }
+ public void setUserSelectionModelClassroom(){
+        UserSelection.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1"}));
+ }
 
-public String getUserSelectionText(){
-    return ResponseField.getText();
-}
 }
