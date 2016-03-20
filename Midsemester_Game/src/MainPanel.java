@@ -193,50 +193,61 @@ public class MainPanel extends JPanel implements ActionListener{
             professor.setLocation(IST210);
         }
     }
-    
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(PaneDisplayed == 1){
-
-            
-            
-            Player = CreatePlayer(intro.getName(), intro.getGender(), true, Lobby);
-            addProfessorToRandomRoom();
-            clearPanel();
+    //Refactor - Extract Method - Adam
+    public int TransitionIntroToGame(){
+        clearPanel();
             add(game);
             printIntro();
             game.PrintToGameText(printLocation());
             button.setTextEnter();
             printRoomOptions();
-            PaneDisplayed = 2;
+            return PaneDisplayed = 2;
+    }
+    //Refactor - Extract Method - Adam 
+    public void TransitionGameToCredits(){
+        clearPanel();
+        remove(button);
+        add(credits, BorderLayout.CENTER);
+    }
+    //Refactor - Extract Method - Adam
+    public void PrintSwitchRoomMenu(){
+        Room CurrentRoom = Player.getLocation();
+        ArrayList RoomList = CurrentRoom.getNeighboringRooms();
+        game.PrintToGameText(PrintNeighboringRooms(RoomList));
+        menuValue = 2;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(PaneDisplayed == 1){
+            Player = CreatePlayer(intro.getName(), intro.getGender(), true, Lobby);
+            addProfessorToRandomRoom();
             Lobby.addPerson(Player);
+            PaneDisplayed = TransitionIntroToGame();
             
         }else{
             int userSelection = game.getUserSelectionNumber();
             boolean usedAMenu = false;
+            
             if (menuValue == 2){ 
-            userSelection = userSelection - 1;   
-            changeRooms(userSelection);
-            menuValue = 1;
-            usedAMenu = true;
+                userSelection = userSelection - 1;   
+                changeRooms(userSelection);
+                menuValue = 1;
+                usedAMenu = true;
                 
            }
            
             if (menuValue == 1 && usedAMenu == false){
-               if(userSelection == 2){
+               
+                if(userSelection == 2){
                    checkForProfessor();
                }else{
-                Room CurrentRoom = Player.getLocation();
-                ArrayList RoomList = CurrentRoom.getNeighboringRooms();
-                game.PrintToGameText(PrintNeighboringRooms(RoomList));
-                menuValue = 2;
+                   PrintSwitchRoomMenu();
                 }usedAMenu = true;
                 
            }if (menuValue == 3 && usedAMenu == false ){
                if(userSelection == 1){
-                   clearPanel();
-                   remove(button);
-                   add(credits, BorderLayout.CENTER);
+                   TransitionGameToCredits();
                }else{
                    printRoomOptions();
                }
